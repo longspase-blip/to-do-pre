@@ -67,6 +67,6 @@ const itemsNamesElements = document.querySelectorAll('.to-do__item-text');
 }
 
 function saveTasks(tasks) {
-
+  localStorage.setItem('to-do-tasks', JSON.stringify(tasks));
 }
 
