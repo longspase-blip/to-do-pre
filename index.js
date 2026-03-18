@@ -70,3 +70,25 @@ function saveTasks(tasks) {
   localStorage.setItem('to-do-tasks', JSON.stringify(tasks));
 }
 
+const temp = [...loadTasks()];
+if (temp.length > 0) {
+  items.length = 0;
+}
+items.push(...temp);
+
+items.forEach((item) => {
+  const createdElement = createItem(item);
+  listElement.append(createdElement);
+});
+
+formElement.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const text = inputElement.value.trim();
+  if (text) {
+    const taskElement = createItem(text);
+    listElement.prepend(taskElement);
+    const updatedTasks = getTasksFromDOM();
+    saveTasks(updatedTasks);
+    inputElement.value = '';
+  }
+});
