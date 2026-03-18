@@ -43,6 +43,10 @@ function createItem(item) {
     saveTasks(updatedTasks);
   });
 
+   editButton.addEventListener('click', () => {
+    textElement.setAttribute('contenteditable', 'true');
+    textElement.focus();
+  });
 
   return clone;
 }
