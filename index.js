@@ -1,10 +1,10 @@
-let items = [
-	"Сделать проектную работу",
-	"Полить цветы",
-	"Пройти туториал по Реакту",
-	"Сделать фронт для своего проекта",
-	"Прогуляться по улице в солнечный день",
-	"Помыть посуду",
+const items = [
+  "Сделать проектную работу",
+  "Полить цветы",
+  "Пройти туториал по Реакту",
+  "Сделать фронт для своего проекта",
+  "Прогуляться по улице в солнечный день",
+  "Помыть посуду",
 ];
 
 const listElement = document.querySelector(".to-do__list");
@@ -12,7 +12,11 @@ const formElement = document.querySelector(".to-do__form");
 const inputElement = document.querySelector(".to-do__input");
 
 function loadTasks() {
-
+  const tasksFromStorage = localStorage.getItem("to-do-tasks");
+  if (tasksFromStorage) {
+    return JSON.parse(tasksFromStorage);
+  }
+  return items;
 }
 
 function createItem(item) {
