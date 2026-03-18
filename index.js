@@ -48,6 +48,12 @@ function createItem(item) {
     textElement.focus();
   });
 
+  textElement.addEventListener('blur', () => {
+    textElement.setAttribute('contenteditable', 'false');
+    const curTasks = getTasksFromDOM();
+    saveTasks(curTasks);
+  });
+
   return clone;
 }
 
